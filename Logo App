@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Design Price Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 40px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Logo Design Price Calculator</h1>
+    <label for="logoType">Select Logo Type:</label>
+    <select id="logoType">
+        <option value="text">Text</option>
+        <option value="symbol">Symbol</option>
+        <option value="combination">Combination</option>
+    </select>
+
+    <label for="colorCount">Number of Colors:</label>
+    <input type="number" id="colorCount" placeholder="Enter the number of colors">
+
+    <label for="revisionCount">Number of Revisions:</label>
+    <input type="number" id="revisionCount" placeholder="Enter the number of revisions">
+
+    <button onclick="calculatePrice()">Calculate Price</button>
+
+    <div id="result"></div>
+
+    <script>
+        function calculatePrice() {
+            const logoType = document.getElementById("logoType").value;
+            const colorCount = parseInt(document.getElementById("colorCount").value);
+            const revisionCount = parseInt(document.getElementById("revisionCount").value);
+
+            let basePrice = 0;
+
+            switch (logoType) {
+                case "text":
+                    basePrice = 100;
+                    break;
+                case "symbol":
+                    basePrice = 150;
+                    break;
+                case "combination":
+                    basePrice = 200;
+                    break;
+                default:
+                    basePrice = 0;
+            }
+
+            const colorPrice = colorCount * 20;
+            const revisionPrice = revisionCount * 50;
+
+            const totalPrice = basePrice + colorPrice + revisionPrice;
+
+            const resultElement = document.getElementById("result");
+            resultElement.innerHTML = `Total Price: $${totalPrice}`;
+        }
+    </script>
+</body>
+</html>
